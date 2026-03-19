@@ -9,9 +9,11 @@ const pipeline = promisify(streamPipeline);
 
 const router = express.Router();
 
-const upload = multer();
+// Separate uploaders to enforce different size limits
+const uploadResume = multer({ limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB
+const uploadProfile = multer({ limits: { fileSize: 2 * 1024 * 1024 } }); // 2MB
 
-router.post("/resume", upload.single("file"), (req, res) => {
+router.post("/resume", uploadResume.single("file"), (req, res) => {
   const file = (req as any).file;
   if (file.detectedFileExtension !== ".pdf") {
     res.status(400).json({
@@ -38,7 +40,7 @@ router.post("/resume", upload.single("file"), (req, res) => {
   }
 });
 
-router.post("/profile", upload.single("file"), (req, res) => {
+router.post("/profile", uploadProfile.single("file"), (req, res) => {
   const file = (req as any).file;
   if (
     file.detectedFileExtension !== ".jpg" &&
@@ -65,6 +67,19 @@ router.post("/profile", upload.single("file"), (req, res) => {
           message: "Error while uploading",
         });
       });
+  }
+});
+
+// Multer error handler (e.g., file too large)
+router.use((err: any, _req: any, res: any, _next: any) => {
+  if (err && err.code === "LIMIT_FILE_SIZE") {
+    res.status(413).json({
+      message: "File too large",
+    });
+  } else if (err) {
+    res.status(400).json({
+      message: "Upload error",
+    });
   }
 });
 

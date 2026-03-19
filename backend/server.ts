@@ -41,7 +41,23 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // Setting up middlewares
-app.use(cors());
+// CORS: allow from FRONTEND_URL if provided; otherwise allow all (dev)
+const allowedOrigins =
+  (process.env.FRONTEND_URL || "")
+    .split(",")
+    .map((o) => o.trim())
+    .filter(Boolean);
+const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(passportConfig.initialize());
 
@@ -50,6 +66,23 @@ app.use("/auth", authRoutes);
 app.use("/api", apiRoutes);
 app.use("/upload", uploadRoutes);
 app.use("/host", downloadRoutes);
+
+// Health and version endpoints for live monitoring
+app.get("/health", (_req, res) => {
+  const dbState = mongoose.connection.readyState; // 0=disconnected,1=connected,2=connecting,3=disconnecting
+  res.json({
+    status: "ok",
+    uptime: process.uptime(),
+    dbState,
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.get("/version", (_req, res) => {
+  res.json({
+    version: process.env.APP_VERSION || "1.0.0",
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}!`);
