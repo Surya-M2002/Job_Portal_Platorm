@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     height: "inherit",
   },
   inputBox: {
-    width: "400px",
+    width: "100%",
+    maxWidth: 420,
   },
 }));
 

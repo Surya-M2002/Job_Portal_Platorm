@@ -26,13 +26,18 @@ import isAuth from "../lib/isAuth";
 
 const useStyles = makeStyles((theme) => ({
   body: {
-    padding: "60px 60px",
+    padding: theme.spacing(3),
+    [theme.breakpoints.up("sm")]: {
+      padding: theme.spacing(6),
+    },
   },
   inputBox: {
-    width: "400px",
+    width: "100%",
+    maxWidth: 420,
   },
   submitButton: {
-    width: "400px",
+    width: "100%",
+    maxWidth: 420,
   },
 }));
 
@@ -60,8 +65,9 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
           className={classes.inputBox}
           key={key}
           style={{ paddingLeft: 0, paddingRight: 0 }}
+          spacing={1}
         >
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               label={`Institution Name #${key + 1}`}
               value={education[key].institutionName}
@@ -71,9 +77,10 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
                 setEducation(newEdu);
               }}
               variant="outlined"
+              fullWidth
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3}>
             <TextField
               label="Start Year"
               value={obj.startYear}
@@ -84,9 +91,10 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
                 newEdu[key].startYear = event.target.value;
                 setEducation(newEdu);
               }}
+              fullWidth
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3}>
             <TextField
               label="End Year"
               value={obj.endYear}
@@ -97,6 +105,7 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
                 newEdu[key].endYear = event.target.value;
                 setEducation(newEdu);
               }}
+              fullWidth
             />
           </Grid>
         </Grid>

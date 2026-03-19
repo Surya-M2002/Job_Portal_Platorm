@@ -18,13 +18,18 @@ import isAuth from "../lib/isAuth";
 
 const useStyles = makeStyles((theme) => ({
   body: {
-    padding: "60px 60px",
+    padding: theme.spacing(3),
+    [theme.breakpoints.up("sm")]: {
+      padding: theme.spacing(6),
+    },
   },
   inputBox: {
-    width: "300px",
+    width: "100%",
+    maxWidth: 360,
   },
   submitButton: {
-    width: "300px",
+    width: "100%",
+    maxWidth: 360,
   },
 }));
 

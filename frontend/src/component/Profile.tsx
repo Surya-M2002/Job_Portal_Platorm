@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     height: "inherit",
   },
   inputBox: {
-    width: "400px",
+    width: "100%",
+    maxWidth: 420,
   },
 }));
 
@@ -44,7 +45,7 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
     <>
       {education.map((obj, key) => (
         <Grid item container className={classes.inputBox} key={key} spacing={1}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               label={`Institution Name #${key + 1}`}
               value={education[key].institutionName}
@@ -57,7 +58,7 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3}>
             <TextField
               label="Start Year"
               value={obj.startYear}
@@ -70,7 +71,7 @@ const MultifieldInput: React.FC<MultifieldInputProps> = (props) => {
               }}
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3}>
             <TextField
               label="End Year"
               value={obj.endYear}

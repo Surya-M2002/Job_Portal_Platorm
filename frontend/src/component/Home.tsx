@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: "border-box",
     width: "100%",
   },
+  searchBox: {
+    width: "100%",
+    maxWidth: 600,
+  },
   popupDialog: {
     height: "100%",
     display: "flex",
@@ -115,8 +119,8 @@ const JobTile: React.FC<JobTileProps> = (props) => {
 
   return (
     <Paper className={classes.jobTileOuter} elevation={3}>
-      <Grid container>
-        <Grid container item xs={9} spacing={1} direction="column">
+      <Grid container spacing={2}>
+        <Grid container item xs={12} sm={9} spacing={1} direction="column">
           <Grid item>
             <Typography variant="h5">{job.title}</Typography>
           </Grid>
@@ -138,7 +142,7 @@ const JobTile: React.FC<JobTileProps> = (props) => {
             ))}
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3}>
           <Button
             variant="contained"
             color="primary"
@@ -160,7 +164,7 @@ const JobTile: React.FC<JobTileProps> = (props) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            minWidth: "50%",
+            minWidth: "min(600px, 92vw)",
             alignItems: "center",
           }}
         >
@@ -235,9 +239,9 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
     <Modal open={open} onClose={handleClose} className={classes.popupDialog}>
       <Paper
         style={{
-          padding: "50px",
+          padding: "30px",
           outline: "none",
-          minWidth: "50%",
+          minWidth: "min(600px, 90vw)",
         }}
       >
         <Grid container direction="column" alignItems="center" spacing={3}>
@@ -342,7 +346,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
               Duration
             </Grid>
             <Grid item xs={9}>
-              <TextField
+            <TextField
                 select
                 label="Duration"
                 variant="outlined"
@@ -559,6 +563,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
 };
 
 const Home: React.FC = (props) => {
+  const classes = useStyles();
   const [jobs, setJobs] = useState<Job[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
   const [searchOptions, setSearchOptions] = useState<SearchOptions>({
@@ -708,7 +713,7 @@ const Home: React.FC = (props) => {
                   </InputAdornment>
                 ),
               }}
-              style={{ width: "500px" }}
+              className={classes.searchBox}
               variant="outlined"
             />
           </Grid>
