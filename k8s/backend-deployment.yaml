@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-portal-backend
+  namespace: job-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job-portal-backend
+  template:
+    metadata:
+      labels:
+        app: job-portal-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/OWNER/job-portal-backend:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PORT
+              value: "5000"
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: job-portal-secrets
+                  key: MONGODB_URI
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: job-portal-secrets
+                  key: JWT_SECRET
+            - name: FRONTEND_URL
+              value: "https://your-vercel-domain.vercel.app"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: job-portal-backend
+  namespace: job-portal
+spec:
+  selector:
+    app: job-portal-backend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5000
