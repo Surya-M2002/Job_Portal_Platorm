@@ -14,10 +14,7 @@ dotenv.config();
 
 // MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/jobPortal", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/jobPortal")
   .then(() => console.log("Connected to DB"))
   .catch((err) => console.log(err));
 
