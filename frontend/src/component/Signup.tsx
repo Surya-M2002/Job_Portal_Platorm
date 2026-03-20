@@ -1,18 +1,10 @@
 import React, { useState, useContext } from "react";
-import {
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  makeStyles,
-  Paper,
-  MenuItem,
-} from "@material-ui/core";
+import { Grid, TextField, Button, Typography, Paper, MenuItem, Autocomplete } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import ChipInput from "material-ui-chip-input";
-import DescriptionIcon from "@material-ui/icons/Description";
-import FaceIcon from "@material-ui/icons/Face";
+import DescriptionIcon from "@mui/icons-material/Description";
+import FaceIcon from "@mui/icons-material/Face";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 
@@ -408,15 +400,24 @@ const Signup: React.FC = (props) => {
               setEducation={setEducation}
             />
             <Grid item>
-              <ChipInput
-                className={classes.inputBox}
-                label="Skills"
-                variant="outlined"
-                helperText="Press enter to add skills"
-                onChange={(chips) =>
-                  setSignupDetails({ ...signupDetails, skills: chips })
-                }
-              />
+            <Autocomplete
+              multiple
+              freeSolo
+              options={[]}
+              value={signupDetails.skills}
+              onChange={(_e, value) =>
+                setSignupDetails({ ...signupDetails, skills: value as string[] })
+              }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className={classes.inputBox}
+                  label="Skills"
+                  variant="outlined"
+                  helperText="Press enter to add skills"
+                />
+              )}
+            />
             </Grid>
             <Grid item>
               <FileUploadInput

@@ -1,14 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-import {
-  Button,
-  Chip,
-  Grid,
-  makeStyles,
-  Paper,
-  Typography,
-  Modal,
-} from "@material-ui/core";
-import Rating from "@material-ui/lab/Rating";
+import { Button, Chip, Grid, Paper, Typography, Modal } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import Rating from "@mui/lab/Rating";
 import axios from "axios";
 
 import { SetPopupContext } from "../App";

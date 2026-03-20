@@ -1,4 +1,10 @@
-export const server = process.env.REACT_APP_SERVER_URL || "http://localhost:4444";
+const inferLocal =
+  typeof window !== "undefined" &&
+  (window.location.port === "3000" || window.location.port === "3001")
+    ? `${window.location.protocol}//${window.location.hostname}:5000`
+    : undefined;
+export const server =
+  process.env.REACT_APP_SERVER_URL || inferLocal || "http://localhost:4444";
 
 const apiList = {
   login: `${server}/auth/login`,

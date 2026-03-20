@@ -1,6 +1,7 @@
 import React, { createContext, useState, Dispatch, SetStateAction } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 import Welcome, { ErrorPage } from "./component/Welcome";
 import Navbar from "./component/Navbar";

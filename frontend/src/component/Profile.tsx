@@ -1,14 +1,8 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import {
-  Button,
-  Grid,
-  Typography,
-  Paper,
-  makeStyles,
-  TextField,
-} from "@material-ui/core";
+import { Button, Grid, Typography, Paper, TextField, Autocomplete } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import axios from "axios";
-import ChipInput from "material-ui-chip-input";
+ 
 import FileUploadInput from "../lib/FileUploadInput";
 import DescriptionIcon from "@material-ui/icons/Description";
 import FaceIcon from "@material-ui/icons/Face";
@@ -243,27 +237,27 @@ const Profile: React.FC = (props) => {
               setEducation={setEducation}
             />
             <Grid item>
-              <ChipInput
-                className={classes.inputBox}
-                label="Skills"
-                variant="outlined"
-                helperText="Press enter to add skills"
+              <Autocomplete
+                multiple
+                freeSolo
+                options={[]}
                 value={profileDetails.skills}
-                onAdd={(chip) =>
+                onChange={(_e, value) =>
                   setProfileDetails({
                     ...profileDetails,
-                    skills: [...profileDetails.skills, chip],
+                    skills: value as string[],
                   })
                 }
-                onDelete={(chip, index) => {
-                  let skills = [...profileDetails.skills];
-                  skills.splice(index, 1);
-                  setProfileDetails({
-                    ...profileDetails,
-                    skills: skills,
-                  });
-                }}
-                fullWidth
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    className={classes.inputBox}
+                    label="Skills"
+                    variant="outlined"
+                    helperText="Press enter to add skills"
+                    fullWidth
+                  />
+                )}
               />
             </Grid>
             <Grid item>

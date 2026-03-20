@@ -1,15 +1,7 @@
 import React, { useContext, useState } from "react";
-import {
-  Button,
-  Grid,
-  Typography,
-  Paper,
-  makeStyles,
-  TextField,
-  MenuItem,
-} from "@material-ui/core";
+import { Button, Grid, Typography, Paper, TextField, MenuItem, Autocomplete } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import axios from "axios";
-import ChipInput from "material-ui-chip-input";
 
 import { SetPopupContext } from "../../App";
 import apiList from "../../lib/apiList";
@@ -124,28 +116,25 @@ const CreateJobs: React.FC = (props) => {
                 />
               </Grid>
               <Grid item>
-                <ChipInput
-                  className={classes.inputBox}
-                  label="Skills"
-                  variant="outlined"
-                  helperText="Press enter to add skills"
-                  value={jobDetails.skillsets}
-                  onAdd={(chip) =>
-                    setJobDetails({
-                      ...jobDetails,
-                      skillsets: [...jobDetails.skillsets, chip],
-                    })
-                  }
-                  onDelete={(chip, index) => {
-                    let skillsets = [...jobDetails.skillsets];
-                    skillsets.splice(index, 1);
-                    setJobDetails({
-                      ...jobDetails,
-                      skillsets: skillsets,
-                    });
-                  }}
-                  fullWidth
-                />
+              <Autocomplete
+                multiple
+                freeSolo
+                options={[]}
+                value={jobDetails.skillsets}
+                onChange={(_e, value) =>
+                  setJobDetails({ ...jobDetails, skillsets: value as string[] })
+                }
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    className={classes.inputBox}
+                    label="Skills"
+                    variant="outlined"
+                    helperText="Press enter to add skills"
+                    fullWidth
+                  />
+                )}
+              />
               </Grid>
               <Grid item>
                 <TextField

@@ -6,9 +6,9 @@ import {
   InputAdornment,
   IconButton,
   FormHelperText,
-} from "@material-ui/core";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 interface PasswordInputProps {
   label: string;
@@ -53,7 +53,6 @@ const PasswordInput: React.FC<PasswordInputProps> = (props) => {
         }
         value={props.value}
         onChange={props.onChange}
-        labelWidth={props.labelWidth || 70}
         onBlur={props.onBlur}
       />
       {props.helperText ? (

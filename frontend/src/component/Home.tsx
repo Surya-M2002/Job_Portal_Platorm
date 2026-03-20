@@ -5,7 +5,6 @@ import {
   Grid,
   IconButton,
   InputAdornment,
-  makeStyles,
   Paper,
   TextField,
   Typography,
@@ -14,8 +13,9 @@ import {
   FormControlLabel,
   MenuItem,
   Checkbox,
-} from "@material-ui/core";
-import Rating from "@material-ui/lab/Rating";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import Rating from "@mui/lab/Rating";
 import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
 import FilterListIcon from "@material-ui/icons/FilterList";

@@ -1,6 +1,6 @@
 import React from "react";
-import { Snackbar } from "@material-ui/core";
-import { Alert, Color } from "@material-ui/lab";
+import Snackbar from "@mui/material/Snackbar";
+import Alert, { AlertColor } from "@mui/material/Alert";
 
 interface MessagePopupProps {
   open: boolean;
@@ -19,7 +19,7 @@ const MessagePopup: React.FC<MessagePopupProps> = (props) => {
 
   return (
     <Snackbar open={props.open} onClose={handleClose} autoHideDuration={2000}>
-      <Alert onClose={handleClose} severity={props.severity as Color}>
+      <Alert onClose={handleClose} severity={props.severity as AlertColor}>
         {props.message}
       </Alert>
     </Snackbar>

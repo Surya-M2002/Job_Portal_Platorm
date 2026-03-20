@@ -13,11 +13,11 @@ import {
   Avatar,
 } from "@material-ui/core";
 import { useParams } from "react-router-dom";
-import Rating from "@material-ui/lab/Rating";
+import Rating from "@mui/lab/Rating";
 import axios from "axios";
-import FilterListIcon from "@material-ui/icons/FilterList";
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import { SetPopupContext } from "../../App";
 import apiList, { server } from "../../lib/apiList";

@@ -1,11 +1,6 @@
 import React, { useContext, useState } from "react";
-import {
-  Grid,
-  Button,
-  Typography,
-  makeStyles,
-  Paper,
-} from "@material-ui/core";
+import { Grid, Button, Typography, Paper } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
@@ -27,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: 360,
   },
-  submitButton: {
+   submitButton: {
     width: "100%",
     maxWidth: 360,
   },
