@@ -293,6 +293,14 @@ const Signup: React.FC = (props) => {
     });
 
     if (verified) {
+      if (updatedDetails.contactNumber && !/^\+\d{1,3}\d{10}$/.test(updatedDetails.contactNumber)) {
+        setPopup({
+          open: true,
+          severity: "error",
+          message: "Enter a valid phone like +911234567890",
+        });
+        return;
+      }
       axios
         .post(apiList.signup, updatedDetails)
         .then((response: any) => {

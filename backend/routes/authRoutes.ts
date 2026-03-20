@@ -40,7 +40,6 @@ router.post("/signup", (req, res) => {
       userDetails
         .save()
         .then(() => {
-          // Token
           const token = jwt.sign({ _id: user._id }, jwtSecretKey);
           res.json({
             token: token,
@@ -51,15 +50,27 @@ router.post("/signup", (req, res) => {
           user
             .deleteOne()
             .then(() => {
-              res.status(400).json(err);
+              if (err && err.code === 11000) {
+                res.status(400).json({ message: "Email already exists" });
+              } else if (err && err.message) {
+                res.status(400).json({ message: err.message });
+              } else {
+                res.status(400).json({ message: "Signup failed" });
+              }
             })
             .catch((deleteErr: any) => {
-              res.json({ error: deleteErr });
+              res.status(400).json({ message: deleteErr?.message || "Signup failed" });
             });
         });
     })
     .catch((err: any) => {
-      res.status(400).json(err);
+      if (err && err.code === 11000) {
+        res.status(400).json({ message: "Email already exists" });
+      } else if (err && err.message) {
+        res.status(400).json({ message: err.message });
+      } else {
+        res.status(400).json({ message: "Signup failed" });
+      }
     });
 });
 
