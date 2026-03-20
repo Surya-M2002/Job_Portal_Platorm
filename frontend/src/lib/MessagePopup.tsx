@@ -10,7 +10,7 @@ interface MessagePopupProps {
 }
 
 const MessagePopup: React.FC<MessagePopupProps> = (props) => {
-  const handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }

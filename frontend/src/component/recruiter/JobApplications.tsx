@@ -4,16 +4,17 @@ import {
   Chip,
   Grid,
   IconButton,
-  makeStyles,
   Paper,
   Typography,
   Modal,
   FormControlLabel,
   Checkbox,
   Avatar,
-} from "@material-ui/core";
+  Theme
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { useParams } from "react-router-dom";
-import Rating from "@mui/lab/Rating";
+import Rating from "@mui/material/Rating";
 import axios from "axios";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
@@ -22,7 +23,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { SetPopupContext } from "../../App";
 import apiList, { server } from "../../lib/apiList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     height: "inherit",
   },
@@ -85,7 +86,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
         }}
       >
         <Grid container direction="column" alignItems="center" spacing={3}>
-          <Grid container item alignItems="center">
+          <Grid container item alignItems="center" justifyContent="space-between">
             <Grid item xs={3}>
               Application Status
             </Grid>
@@ -93,7 +94,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
               container
               item
               xs={9}
-              justify="space-around"
+              justifyContent="space-around"
             >
               <Grid item>
                 <FormControlLabel
@@ -166,7 +167,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={4}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -222,7 +223,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={4}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -278,7 +279,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={4}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -746,7 +747,7 @@ const JobApplications: React.FC = (props) => {
           direction="column"
           style={{ width: "100%" }}
           alignItems="stretch"
-          justify="center"
+          justifyContent="center"
         >
           {applications.length > 0 ? (
             applications.map((obj) => (

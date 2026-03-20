@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Button, Grid, Typography, Paper, TextField, MenuItem, Autocomplete } from "@mui/material";
+import { Button, Grid, Typography, Paper, TextField, MenuItem, Autocomplete, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
 
 import { SetPopupContext } from "../../App";
 import apiList from "../../lib/apiList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     height: "inherit",
   },
@@ -86,7 +86,7 @@ const CreateJobs: React.FC = (props) => {
       <Grid item>
         <Typography variant="h2">Add Job</Typography>
       </Grid>
-      <Grid item container xs direction="column" justify="center">
+      <Grid item container xs direction="column" justifyContent="center">
         <Grid item>
           <Paper
             style={{

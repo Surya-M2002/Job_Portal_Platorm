@@ -13,10 +13,11 @@ import {
   FormControlLabel,
   MenuItem,
   Checkbox,
+  Theme
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useHistory } from "react-router-dom";
-import Rating from "@mui/lab/Rating";
+import Rating from "@mui/material/Rating";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -26,7 +27,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { SetPopupContext } from "../../App";
 import apiList from "../../lib/apiList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     height: "inherit",
   },
@@ -245,7 +246,7 @@ const JobTile: React.FC<JobTileProps> = (props) => {
           <Typography variant="h4" style={{ marginBottom: "10px" }}>
             Are you sure?
           </Typography>
-          <Grid container justify="center" spacing={5}>
+          <Grid container justifyContent="center" spacing={5}>
             <Grid item>
               <Button
                 variant="contained"
@@ -336,7 +337,7 @@ const JobTile: React.FC<JobTileProps> = (props) => {
               />
             </Grid>
           </Grid>
-          <Grid container justify="center" spacing={5}>
+          <Grid container justifyContent="center" spacing={5}>
             <Grid item>
               <Button
                 variant="contained"
@@ -418,7 +419,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
               container
               item
               xs={9}
-              justify="space-around"
+              justifyContent="space-around"
             >
               <Grid item>
                 <FormControlLabel
@@ -544,7 +545,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={4}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -600,7 +601,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={4}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -656,7 +657,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={4}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -841,7 +842,7 @@ const MyJobs: React.FC = (props) => {
           item
           container
           direction="column"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           <Grid item xs>
@@ -888,7 +889,7 @@ const MyJobs: React.FC = (props) => {
           xs
           direction="column"
           alignItems="stretch"
-          justify="center"
+          justifyContent="center"
         >
           {jobs.length > 0 ? (
             jobs.map((job) => {

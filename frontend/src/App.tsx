@@ -1,6 +1,6 @@
 import React, { createContext, useState, Dispatch, SetStateAction } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Grid, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import Welcome, { ErrorPage } from "./component/Welcome";
@@ -19,7 +19,7 @@ import RecruiterProfile from "./component/recruiter/Profile";
 import MessagePopup from "./lib/MessagePopup";
 import { userType } from "./lib/isAuth";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     display: "flex",
     flexDirection: "column",

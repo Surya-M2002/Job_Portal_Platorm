@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import { Button, Grid, Typography, Paper, TextField, Autocomplete } from "@mui/material";
+import { Button, Grid, Typography, Paper, TextField, Autocomplete, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
  
 import FileUploadInput from "../lib/FileUploadInput";
-import DescriptionIcon from "@material-ui/icons/Description";
-import FaceIcon from "@material-ui/icons/Face";
+import DescriptionIcon from "@mui/icons-material/Description";
+import FaceIcon from "@mui/icons-material/Face";
 
 import { SetPopupContext } from "../App";
 import apiList from "../lib/apiList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     height: "inherit",
   },

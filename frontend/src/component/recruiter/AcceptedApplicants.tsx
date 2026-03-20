@@ -9,9 +9,10 @@ import {
   Modal,
   Checkbox,
   Avatar,
+  Theme
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Rating from "@mui/lab/Rating";
+import Rating from "@mui/material/Rating";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -19,7 +20,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { SetPopupContext } from "../../App";
 import apiList, { server } from "../../lib/apiList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     height: "inherit",
   },
@@ -88,7 +89,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={6}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -144,7 +145,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={6}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -200,7 +201,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={6}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -256,7 +257,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
                 item
                 container
                 xs={6}
-                justify="space-around"
+                justifyContent="space-around"
                 alignItems="center"
                 style={{ border: "1px solid #D1D1D1", borderRadius: "5px" }}
               >
@@ -600,7 +601,7 @@ const ApplicationTile: React.FC<ApplicationTileProps> = (props) => {
           <Typography variant="h4" style={{ marginBottom: "10px" }}>
             Are you sure?
           </Typography>
-          <Grid container justify="center" spacing={5}>
+          <Grid container justifyContent="center" spacing={5}>
             <Grid item>
               <Button
                 variant="contained"
@@ -727,7 +728,7 @@ const AcceptedApplicants: React.FC = (props) => {
           direction="column"
           style={{ width: "100%" }}
           alignItems="stretch"
-          justify="center"
+          justifyContent="center"
         >
           {applications.length > 0 ? (
             applications.map((obj) => (

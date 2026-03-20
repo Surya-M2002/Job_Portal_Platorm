@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 
 const Welcome: React.FC = (props) => {
   return (
@@ -8,7 +8,7 @@ const Welcome: React.FC = (props) => {
       item
       direction="column"
       alignItems="center"
-      justify="center"
+      justifyContent="center"
       style={{ padding: "30px", minHeight: "93vh" }}
     >
       <Grid item>
@@ -25,7 +25,7 @@ export const ErrorPage: React.FC = (props) => {
       item
       direction="column"
       alignItems="center"
-      justify="center"
+      justifyContent="center"
       style={{ padding: "30px", minHeight: "93vh" }}
     >
       <Grid item>

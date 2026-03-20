@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-import { Button, Chip, Grid, Paper, Typography, Modal } from "@mui/material";
+import { Button, Chip, Grid, Paper, Typography, Modal,
+  Theme
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Rating from "@mui/lab/Rating";
+import Rating from "@mui/material/Rating";
 import axios from "axios";
 
 import { SetPopupContext } from "../App";
 import apiList from "../lib/apiList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     height: "inherit",
   },
@@ -266,7 +268,7 @@ const Applications: React.FC = (props) => {
         direction="column"
         style={{ width: "100%" }}
         alignItems="stretch"
-        justify="center"
+        justifyContent="center"
       >
         {applications.length > 0 ? (
           applications.map((obj) => (

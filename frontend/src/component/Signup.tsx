@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Grid, TextField, Button, Typography, Paper, MenuItem, Autocomplete } from "@mui/material";
+import { Grid, TextField, Button, Typography, Paper, MenuItem, Autocomplete, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
@@ -16,7 +16,7 @@ import { SetPopupContext } from "../App";
 import apiList from "../lib/apiList";
 import isAuth from "../lib/isAuth";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   body: {
     padding: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {
